@@ -3,29 +3,35 @@ import React from "react"
 import styled from "styled-components"
 
 import Image from "next/image"
+import { menuTitleList } from "@/constants/header/menuTitleList"
+import Link from "next/link"
 
-const NavTitle = () => {
+const NavMenuTitle = () => {
   return (
     <Container>
-      <Image
-        className="hotVpnLogo"
-        src="/image/common/HotVPNlogo.png"
-        width={190}
-        height={46}
-        alt="logo"
-      />
+      <Link href="/main">
+        <Image
+          className="hotVpnLogo"
+          src="/image/common/HotVPNlogo.png"
+          width={190}
+          height={46}
+          alt="logo"
+        />
+      </Link>
       <ul className="navTitle">
-        <li>서비스 안내</li>
-        <li>서비스 신청</li>
-        <li>이용방법</li>
-        <li>마이페이지</li>
-        <li>고객센터</li>
+        {menuTitleList.map((item, id) => {
+          return (
+            <li key={id}>
+              <Link href={item.link}>{item.title}</Link>
+            </li>
+          )
+        })}
       </ul>
     </Container>
   )
 }
 
-export default NavTitle
+export default NavMenuTitle
 
 const Container = styled.div`
   display: flex;

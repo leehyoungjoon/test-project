@@ -1,20 +1,62 @@
-import React from "react"
+let debug = true
+
+import React, { useState, useEffect, useRef } from "react"
 import styled, { css } from "styled-components"
-
 import { menuSubList } from "@/constants/header/menuSubList"
+import { menuSubList_teacher } from "@/constants/header/menuSubList"
 import Link from "next/link"
+// import { useUserStore } from "@/store/adviceStore";
+import SessionStorage from "@/constants/sessionStorage/SessionStorage"
 
-const HeaderSubMenuList = ({ isMenuOpen, setIsMenuOpen }: any) => {
+import { useAuthStore } from "@/store/authStore"
+
+const HeaderSubMenuList = ({
+  isMenuOpen,
+  setIsMenuOpen,
+  getValueSync,
+}: any) => {
+  // const user = useUserStore((state: any) => state.user);
+  // const fetchUserData = useUserStore((state: any) => state.fetchUserData);
+  const [userType, setUserType] = useState<string | undefined>()
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
+
+  const { getCookieDataEach, getCookieData } = useAuthStore()
+
+  const userTypeRef = useRef<string>()
+
+  useEffect(() => {
+    setIsLoggedIn(getCookieDataEach("isLoggedIn"))
+    setUserType(getCookieDataEach("userType"))
+
+    userTypeRef.current = getCookieDataEach("userType")
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  const [guide, setGuide] = useState(false) //변경시 가이드 감추기
+  const [top, setTop] = useState("-200px")
+
+  const [test, setTest] = useState("")
+
   const handleMenuHover = () => {
     setIsMenuOpen(true)
   }
 
+  const handleMenuLeave = () => {
+    setTest(getValueSync())
+    setIsMenuOpen(false)
+  }
+
   return (
-    <StyledWrapper isMenuOpen={isMenuOpen}>
+    <StyledWrapper
+      test={test}
+      isMenuOpen={isMenuOpen}
+      onMouseEnter={handleMenuHover}
+      onMouseLeave={handleMenuLeave}
+      top={top}
+    >
       <div className="menu-sub-wrapper">
-        <div className="uiBox"></div>
-        <SubMenuList isMenuOpen={isMenuOpen}>
-          {menuSubList.map((item: any, index: any) => (
+        <SubMenuList isMenuOpen={isMenuOpen} guide={guide}>
+          {menuSubList_teacher.map((item: any, index: any) => (
             <li key={index}>
               {item.title.map((title: any, i: any) => (
                 <div key={i} className={title.className}>
@@ -36,20 +78,12 @@ const StyledWrapper: any = styled.div<any>`
     position: fixed;
     width: 100%;
     height: 30rem;
-    
+
     background-color: #fff;
-    //box-shadow: 0 3px 6px rgb(219 227 248 / 40%);
     top: ${isMenuOpen ? "70px" : "-230px"};
     transition: top 0.2s ease-in;
-    //background-color: rgba(50, 70, 0, 0.5);
 
-    transition-delay:${(props: any) => {
-      //console.log("");
-      // if (props.test == "wow") {
-      //   return "0s";
-      // } else {
-      //   return "1s";
-      // }
+    transition-delay: ${(props: any) => {
       return props.isMenuOpen ? "0.05s" : "0"
     }};
 
@@ -57,15 +91,13 @@ const StyledWrapper: any = styled.div<any>`
 
     .menu-sub-wrapper {
       display: flex;
-     
       justify-content: flex-start;
       margin: 0px auto;
       width: 100%;
       max-width: 1080px;
-      //box-shadow:0 0 0 1px #f00;
+
       .uiBox {
         min-width: 280px;
-        // background-color: rgba(100, 100, 200, 0.5);
         background-color: ${(props: any) => {
           //console.log(props.test);
           if (props.test === "wow") {
@@ -76,8 +108,10 @@ const StyledWrapper: any = styled.div<any>`
         }};
         font-size: 15px;
       }
+
       .menu-list-wrapper {
-       
+        /* Add styling for menu-list-wrapper here */
+      }
     }
   `}
 `

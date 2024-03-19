@@ -11,7 +11,7 @@ const TopNavWrap = () => {
         <div className="currentIP">
           <Image
             className="Rectangle"
-            src="/image/common/Rectamgle.png"
+            src="/image/common/Rectangle.png"
             width={5}
             height={5}
             alt="Rectangle"
@@ -65,7 +65,7 @@ const Container = styled.div`
       min-width: 234px;
 
       .Rectangle {
-        padding-right: 10px;
+        margin-right: 10px;
       }
     }
 
@@ -75,7 +75,8 @@ const Container = styled.div`
       align-items: center;
       list-style: none;
       min-width: 192px;
-      display: flex;
+      font-size: 14px;
+      font-weight: 350;
     }
   }
 `
