@@ -4,11 +4,27 @@ import Link from "next/link"
 import styled, { css } from "styled-components"
 import { menuDetailList } from "@/constants/header/menuDetailList"
 
-const NavMenuList = () => {
+const NavMenuList = ({ onMouseEnter, onMouseLeave }: any) => {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+
+  const handleMouseEnter = () => {
+    setIsDropdownOpen(true)
+    onMouseEnter() // 부모 컴포넌트에서 전달된 이벤트 핸들러 호출
+  }
+
+  const handleMouseLeave = () => {
+    setIsDropdownOpen(false)
+    onMouseLeave() // 부모 컴포넌트에서 전달된 이벤트 핸들러 호출
+  }
+  console.log(isDropdownOpen)
   return (
     <Container>
       <div className="box"></div>
-      <ul className="dropdownMenu">
+      <ul
+        className={`dropdownMenu ${isDropdownOpen ? "open" : ""}`}
+        onMouseOver={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
         {menuDetailList.map((item: any, index: any) => (
           <li key={index}>
             {item.title.map((title: any, i: any) => (

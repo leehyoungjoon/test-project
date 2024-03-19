@@ -6,7 +6,7 @@ import Image from "next/image"
 import { menuTitleList } from "@/constants/header/menuTitleList"
 import Link from "next/link"
 
-const NavMenuTitle = () => {
+const NavMenuTitle = ({ onMouseEnter, onMouseLeave }: any) => {
   return (
     <Container>
       <Link href="/main">
@@ -18,7 +18,11 @@ const NavMenuTitle = () => {
           alt="logo"
         />
       </Link>
-      <ul className="navTitle">
+      <ul
+        className="navTitle"
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+      >
         {menuTitleList.map((item, id) => {
           return (
             <li key={id}>
