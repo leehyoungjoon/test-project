@@ -1,37 +1,44 @@
-import React from "react"
+import React, { useState } from "react"
 
 import styled from "styled-components"
 
 import Image from "next/image"
 import { menuTitleList } from "@/constants/header/menuTitleList"
 import Link from "next/link"
+import NavMenuList from "./NavMenuList"
 
-const NavMenuTitle = ({ onMouseEnter, onMouseLeave }: any) => {
+const NavMenuTitle = () => {
+  const [isHovered, setIsHovered] = useState(false)
+
   return (
-    <Container>
-      <Link href="/main">
-        <Image
-          className="hotVpnLogo"
-          src="/image/common/HotVPNlogo.png"
-          width={190}
-          height={46}
-          alt="logo"
-        />
-      </Link>
-      <ul
-        className="navTitle"
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
+    <>
+      <Container
+        onMouseOver={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
       >
-        {menuTitleList.map((item, id) => {
-          return (
-            <li key={id}>
-              <Link href={item.link}>{item.title}</Link>
-            </li>
-          )
-        })}
-      </ul>
-    </Container>
+        <Link href="/main">
+          <Image
+            className="hotVpnLogo"
+            src="/image/common/HotVPNlogo.png"
+            width={190}
+            height={46}
+            alt="logo"
+          />
+        </Link>
+        <ul className="navTitle">
+          {menuTitleList.map((item, id) => {
+            return (
+              <li key={id}>
+                <Link href={item.link}>{item.title}</Link>
+              </li>
+            )
+          })}
+        </ul>
+      </Container>
+      <NavMenuListContainer isHovered={isHovered}>
+        <NavMenuList />
+      </NavMenuListContainer>
+    </>
   )
 }
 
@@ -58,4 +65,9 @@ const Container = styled.div`
     line-height: 4.4;
     color: #3e3e3e;
   }
+`
+const NavMenuListContainer = styled.div`
+  max-height: ${({ isHovered }: any) => (isHovered ? "200px" : "0px")};
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
 `

@@ -4,27 +4,10 @@ import Link from "next/link"
 import styled, { css } from "styled-components"
 import { menuDetailList } from "@/constants/header/menuDetailList"
 
-const NavMenuList = ({ onMouseEnter, onMouseLeave }: any) => {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
-
-  const handleMouseEnter = () => {
-    setIsDropdownOpen(true)
-    onMouseEnter() // 부모 컴포넌트에서 전달된 이벤트 핸들러 호출
-  }
-
-  const handleMouseLeave = () => {
-    setIsDropdownOpen(false)
-    onMouseLeave() // 부모 컴포넌트에서 전달된 이벤트 핸들러 호출
-  }
-  console.log(isDropdownOpen)
+const NavMenuList = () => {
   return (
     <Container>
-      <div className="box"></div>
-      <ul
-        className={`dropdownMenu ${isDropdownOpen ? "open" : ""}`}
-        onMouseOver={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
+      <ul className="dropdownMenu">
         {menuDetailList.map((item: any, index: any) => (
           <li key={index}>
             {item.title.map((title: any, i: any) => (
@@ -47,17 +30,12 @@ const Container = styled.nav`
   align-items: center;
   min-width: 1072px;
 
-  .box {
-    width: 190px;
-    height: 46px;
-    background-color: green;
-  }
-
   .dropdownMenu {
     display: flex;
     justify-content: space-evenly;
-    padding-left: 30px;
-    width: 880px;
+    margin-left: 240px;
+    /* padding-left: 10px; */
+    min-width: 880px;
     color: #3e3e3e;
     list-style: none;
 
@@ -72,8 +50,6 @@ const Container = styled.nav`
     li {
       font-size: 16px;
       line-height: 30px;
-      /* min-width: 25px; */
-      /* background-color: aqua; */
       height: 27px;
 
       &:hover {
@@ -82,19 +58,22 @@ const Container = styled.nav`
     }
 
     li:first-child {
+      /* margin-right: -5px; */
     }
 
     li:nth-child(2) {
-      min-width: 30px;
+      /* margin-left: 10px; */
     }
 
     li:nth-child(3) {
+      /* margin-left: 10px; */
     }
 
     li:nth-child(4) {
     }
 
     li:last-child {
+      /* padding-left: 10px; */
     }
   }
 `
