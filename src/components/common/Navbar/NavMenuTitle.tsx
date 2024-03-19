@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useState } from "react"
 
 import styled from "styled-components"
@@ -16,7 +18,7 @@ const NavMenuTitle = () => {
         onMouseOver={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <Link href="/main">
+        <Link href="/">
           <Image
             className="hotVpnLogo"
             src="/image/common/HotVPNlogo.png"
@@ -35,7 +37,11 @@ const NavMenuTitle = () => {
           })}
         </ul>
       </Container>
-      <NavMenuListContainer isHovered={isHovered}>
+      <NavMenuListContainer
+        isHovered={isHovered}
+        onMouseOver={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
         <NavMenuList />
       </NavMenuListContainer>
     </>
@@ -67,7 +73,8 @@ const Container = styled.div`
   }
 `
 const NavMenuListContainer = styled.div`
-  max-height: ${({ isHovered }: any) => (isHovered ? "200px" : "0px")};
+  height: ${({ isHovered }: any) => (isHovered ? "200px" : "0px")};
   overflow: hidden;
-  transition: max-height 0.3s ease-in-out;
+  transition: max-height 0.5s ease-out;
+  box-shadow: 0px 10px 13px -10px rgba(0, 0, 0, 0.2);
 `
