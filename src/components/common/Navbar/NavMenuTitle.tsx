@@ -67,13 +67,13 @@ const Container = styled.div`
     min-width: 880px;
     list-style: none;
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 4.4;
     color: #3e3e3e;
   }
 `
-const NavMenuListContainer = styled.div`
-  height: ${({ isHovered }: any) => (isHovered ? "200px" : "0px")};
+const NavMenuListContainer = styled.div<{ isHovered: boolean }>`
+  height: ${({ isHovered }) => (isHovered ? "200px" : "0px")};
   overflow: hidden;
   transition: max-height 0.5s ease-out;
   box-shadow: 0px 10px 13px -10px rgba(0, 0, 0, 0.2);

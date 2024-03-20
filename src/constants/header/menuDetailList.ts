@@ -3,13 +3,14 @@ export const menuDetailList = [
     title: [
       {
         text: "통신사 고정IP",
-        link: "/serviceguide/dynamicip",
-        className: "serviceguideDynamicip",
+        link: "/serviceguide/fixedip",
+        className: "serviceguideFixedip",
       },
       {
         text: "통신사 유동IP",
-        link: "/serviceguide/fixedip",
-        className: "serviceguideFixedip",
+
+        link: "/serviceguide/dynamicip",
+        className: "serviceguideDynamicip",
       },
     ],
   },
@@ -18,23 +19,23 @@ export const menuDetailList = [
     title: [
       {
         text: "통신사 고정IP",
-        link: "/serviceapplication/dynaminip",
+        link: "/serviceapplication/fixedip",
+        className: "serviceapplicationFixedip",
+      },
+      {
+        text: "통신사 유동IP",
+        link: "/serviceapplication/dynamicip",
         className: "serviceapplicationDynaminip",
       },
       {
-        text: "통시사 유동IP",
-        link: "/serviceguide/fixedip",
-        className: "serviceguideFixedip",
-      },
-      {
         text: "IP교체 신청",
-        link: "/serviceguide/ipreplacementapplication",
-        className: "serviceguideIpreplacementapplication",
+        link: "/serviceapplication/ipreplacementapplication",
+        className: "serviceapplicationIpreplacementapplication",
       },
       {
         text: "IP교체권 구매",
-        link: "/serviceguide/ipreplacementpurchase",
-        className: "serviceguideIpreplacementpurchase",
+        link: "/serviceapplication/ipreplacementpurchase",
+        className: "serviceapplicationIpreplacementpurchase",
       },
     ],
   },
@@ -96,6 +97,7 @@ export const menuDetailList = [
   },
 
   {
+    clssName: "tirle",
     title: [
       {
         text: "공지사항",
@@ -109,13 +111,13 @@ export const menuDetailList = [
       },
       {
         text: "1:1문의",
-        link: "/customercenter/announcement",
-        className: "customercenterAnnouncement",
-      },
-      {
-        text: "공지사항",
         link: "/customercenter/inquiry",
         className: "customercenterInquiry",
+      },
+      {
+        text: "원격조회",
+        link: "/customercenter/remotesupport",
+        className: "customercenterrRemotesupport",
       },
       {
         text: "IP조회",

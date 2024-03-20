@@ -42,7 +42,20 @@ const Container = styled.nav`
     list-style: none;
 
     .serviceguideDynamicip,
-    .serviceguideFixedip {
+    .serviceguideFixedip,
+    .serviceapplicationDynaminip,
+    .serviceapplicationFixedip,
+    .serviceapplicationIpreplacementapplication,
+    .serviceapplicationIpreplacementpurchase,
+    .usageProgram,
+    .usageWindows,
+    .usageAndroid,
+    .usageIos,
+    .customercenterAnnouncement,
+    .customercenterAskedquestions,
+    .customercenterInquiry,
+    .customercenterrRemotesupport,
+    .customercenterIplookup {
       &:hover {
         color: red;
         font-weight: bold;
