@@ -1,6 +1,6 @@
 import "@/styles/globals.css"
 import type { AppProps } from "next/app"
-import Layout from "../src/components/Layout/Layout"
+import Layout from "../src/components/common/Layout/Layout"
 
 import { Inter } from "next/font/google"
 import { Noto_Sans_KR } from "next/font/google"
