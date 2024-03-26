@@ -7,8 +7,8 @@ import styled from "styled-components"
 import Image from "next/image"
 import Link from "next/link"
 
-import TopNav from "./TopNav"
-import NavMenuTitle from "./NavMenuTitle"
+import TopNav from "@/components/Navbar/fragment/TopNav"
+import NavMenuTitle from "./fragment/NavMenuTitle"
 
 const Navbar = () => {
   return (
