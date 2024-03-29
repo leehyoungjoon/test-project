@@ -1,30 +1,28 @@
-import "@/styles/globals.css"
-import type { AppProps } from "next/app"
-import Layout from "../src/components/common/Layout/Layout"
+import type { AppProps } from 'next/app';
+import Layout from '../src/components/common/Layout/Layout';
 
-import { Inter } from "next/font/google"
-import { Noto_Sans_KR } from "next/font/google"
+import { Noto_Sans_KR } from 'next/font/google';
 
-const inter = Inter({ subsets: ["latin"] })
+import GlobalsStyles from '../styles/GlobalsStyles';
+
+import { ThemeProvider } from 'styled-components';
+import theme from '../styles/theme';
 
 const notoSansKr = Noto_Sans_KR({
+  subsets: ['latin'],
   preload: true,
-  subsets: ["latin"],
-  weight: ["100", "400", "500", "600", "700", "900"],
-})
-
-export const cls = (...classnames: string[]) => {
-  return classnames.join(" ")
-}
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+});
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <>
-      <div className={cls(notoSansKr.className)}>
+    <ThemeProvider theme={theme}>
+      <GlobalsStyles />
+      <div className={notoSansKr.className}>
         <Layout>
           <Component {...pageProps} />
         </Layout>
       </div>
-    </>
-  )
+    </ThemeProvider>
+  );
 }

@@ -1,16 +1,15 @@
-import React from "react"
-import Navbar from "../../Navbar/Navbar"
-import Side from "@/components/Side"
-import Footer from "@/components/Footer"
-import StyledComponentsRegistry from "@/styles/StyledComponentsRegistry"
+import React from 'react';
+import Navbar from '../../Navbar/Navbar';
+import Footer from '../../Footer';
+import Side from '../../Side';
 
 export default function Layout({ children }: React.PropsWithChildren) {
   return (
-    <StyledComponentsRegistry>
+    <>
       <Navbar />
       <div>{children}</div>
       <Side />
       <Footer />
-    </StyledComponentsRegistry>
-  )
+    </>
+  );
 }

@@ -1,14 +1,14 @@
-"use client"
+'use client';
 
-import React, { useState } from "react"
+import React, { useState } from 'react';
 
-import styled from "styled-components"
+import styled from 'styled-components';
 
-import Image from "next/image"
-import Link from "next/link"
+import Image from 'next/image';
+import Link from 'next/link';
 
-import TopNav from "@/components/Navbar/fragment/TopNav"
-import NavMenuTitle from "./fragment/NavMenuTitle"
+import TopNav from './fragment/TopNav';
+import NavMenuTitle from './fragment/NavMenuTitle';
 
 const Navbar = () => {
   return (
@@ -16,9 +16,9 @@ const Navbar = () => {
       <TopNav />
       <NavMenuTitle />
     </Container>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
 
-const Container = styled.nav``
+const Container = styled.nav``;

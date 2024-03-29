@@ -1,16 +1,16 @@
-"use client"
+'use client';
 
-import React, { useState } from "react"
+import React, { useState } from 'react';
 
-import styled from "styled-components"
+import styled from 'styled-components';
 
-import Image from "next/image"
-import { menuTitleList } from "@/constants/header/menuTitleList"
-import Link from "next/link"
-import NavMenuList from "./NavMenuList"
+import Image from 'next/image';
+import { menuTitleList } from 'constants/header/menuTitleList';
+import Link from 'next/link';
+import NavMenuList from './NavMenuList';
 
 const NavMenuTitle = () => {
-  const [isHovered, setIsHovered] = useState(false)
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
     <>
@@ -33,7 +33,7 @@ const NavMenuTitle = () => {
               <li key={id}>
                 <Link href={item.link}>{item.title}</Link>
               </li>
-            )
+            );
           })}
         </ul>
       </Container>
@@ -45,10 +45,10 @@ const NavMenuTitle = () => {
         <NavMenuList />
       </NavMenuListContainer>
     </>
-  )
-}
+  );
+};
 
-export default NavMenuTitle
+export default NavMenuTitle;
 
 const Container = styled.div`
   display: flex;
@@ -71,10 +71,10 @@ const Container = styled.div`
     line-height: 4.4;
     color: #3e3e3e;
   }
-`
+`;
 const NavMenuListContainer = styled.div<{ isHovered: boolean }>`
-  height: ${({ isHovered }) => (isHovered ? "200px" : "0px")};
+  height: ${({ isHovered }) => (isHovered ? '200px' : '0px')};
   overflow: hidden;
   transition: max-height 0.5s ease-out;
   box-shadow: 0px 10px 13px -10px rgba(0, 0, 0, 0.2);
-`
+`;

@@ -5,23 +5,23 @@ import Document, {
   NextScript,
   DocumentContext,
   DocumentInitialProps,
-} from "next/document"
+} from 'next/document';
 
 class MyDocument extends Document {
   static async getInitialProps(
-    ctx: DocumentContext
+    ctx: DocumentContext,
   ): Promise<DocumentInitialProps> {
-    const originalRenderPage = ctx.renderPage
+    const originalRenderPage = ctx.renderPage;
 
     ctx.renderPage = () =>
       originalRenderPage({
         enhanceApp: (App) => App,
         enhanceComponent: (Component) => Component,
-      })
+      });
 
-    const initialProps = await Document.getInitialProps(ctx)
+    const initialProps = await Document.getInitialProps(ctx);
 
-    return initialProps
+    return initialProps;
   }
 
   render() {
@@ -29,7 +29,7 @@ class MyDocument extends Document {
       <Html lang="en">
         <Head>
           <link rel="icon" href="public/favicon.ico" />
-          <title>HotVPN</title>
+          <title>TEST HotVPN</title>
           <meta charSet="UTF-8" />
           <meta property="og:site_name" content="HotVPN" />
           <meta property="og:title" content="HotVPN" />
@@ -42,8 +42,8 @@ class MyDocument extends Document {
           <NextScript />
         </body>
       </Html>
-    )
+    );
   }
 }
 
-export default MyDocument
+export default MyDocument;

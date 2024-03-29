@@ -1,10 +1,10 @@
-"use client"
+'use client';
 
-import React, { useState } from "react"
+import React, { useState } from 'react';
 
-import Link from "next/link"
-import styled, { css } from "styled-components"
-import { menuDetailList } from "@/constants/header/menuDetailList"
+import Link from 'next/link';
+import styled, { css } from 'styled-components';
+import { menuDetailList } from 'constants/header/menuDetailList';
 
 const NavMenuList = () => {
   return (
@@ -21,10 +21,10 @@ const NavMenuList = () => {
         ))}
       </ul>
     </Container>
-  )
-}
+  );
+};
 
-export default NavMenuList
+export default NavMenuList;
 
 const Container = styled.nav`
   display: flex;
@@ -91,4 +91,4 @@ const Container = styled.nav`
       /* padding-left: 10px; */
     }
   }
-`
+`;
